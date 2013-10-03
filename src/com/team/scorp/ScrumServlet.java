@@ -29,7 +29,7 @@ public class ScrumServlet extends HttpServlet  implements Serializable {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
 					"/ListarProyectos.jsp");
 			rd.forward(req, resp);*/
-			
+			//Este es un comentario---- no m digas
 		}
 	}
 
