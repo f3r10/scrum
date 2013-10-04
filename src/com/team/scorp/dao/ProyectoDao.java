@@ -1,38 +1,38 @@
 package com.team.scorp.dao;
 
+import com.team.scorp.bean.Proyecto;
+import com.team.JDO.*;
+
 import javax.jdo.PersistenceManager;
 
 import com.team.scorp.bean.Proyecto;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+
 import com.google.appengine.api.users.*;
+
 import javax.jdo.Query;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 
-public class ProyectoDao {
-	// Metodo para Insertar un Nuevo Registro
-	public static void insertarProyecto(String nombres) {
-		// LLamamos a la clase que tendra la persistencia
-		
-		// Nueva variable empleado
-		Proyecto proyecto = new Proyecto(nombres);
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		// Haciendo la persistencia de datos
-			
-		try{
-			pm.makePersistent(proyecto);	
-		}
-		finally{
-		pm.close();
-		}
-	}
-
+public class ProyectoDao extends Action implements Serializable {
 	@SuppressWarnings("unchecked")
-	// Metodo para Listar Empleados
-	public static List<Proyecto> listarProyecto() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		Query query = pm.newQuery("select from " + Proyecto.class.getName()
-				+ "");
-		pm.close();
-		return (List<Proyecto>) query.execute();
-		
+	public void run()throws ServletException, IOException{
+		try {
+			//prueba de github
+			Proyecto proyecto=new Proyecto();
+			proyecto.setNombre(request.getParameter("nombre"));
+			jdo= JDO.getInstance(Proyecto.class);
+			jdo.insert(proyecto);
+		}catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
+		RequestDispatcher rd=application.getRequestDispatcher("/index.jsp?pagina=gd");
+		if(rd==null){
+			throw new ServletException("pagina no encontrada");
+		}
+		rd.forward(request,response);
 	}
 }

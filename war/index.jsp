@@ -12,25 +12,21 @@
 </head>
 <body>
 
-<form action="/index.jsp" method="post">
-  <div align="center">
-  <table border="0" cellspacing="1" cellpadding="5">
-      <tr bgcolor="#4B4B5A" style="color: white;" ><td colspan="2" align="center"><h3><u>Mantenimiento de Empleados</u></h3></td></tr>
-      <tr>
-       <td>Nombres:</td>
-       <td><input type="text" name="nombres" /></td>
-      </tr>
-      
-      
-      <tr>
-       <td colspan="2" align="center">
-       <input type="hidden" name="action" value="registrar"/>
-       <input type="submit" value="Registrar" class="boton" >
-       </td>
-      </tr>
-   </table>
-   </div>
-   </form>
+<form action="index.jsp" method="post" enctype="application/x-www-form-urlencoded">
+	<table id="registro" width="110" border="0" cellspacing="0" cellpadding="5">
+		<tr align="center">
+			<td colspan="2" align="center">DATOS DEPARTAMENTO</td>
+		</tr>
+		<tr>
+			<td>NOMBRE</td>
+			<td><input name="nombre" type="text"> </td>
+		</tr>
+		
+  		<tr align="center">
+    		<td colspan="2" align="center"><input type="submit" value="Guargar"></td>
+  		</tr>
+	</table>
+</form>
 
 </body>
 </html>
